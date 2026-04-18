@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مخبز الأمواج | Al-Amwaj Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-gold: #d4af37;
+            --light-gold: #f4e4bc;
+            --cream: #fef9f3;
+            --dark: #1a1a2e;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Noto Naskh Arabic', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--primary-gold);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.05);
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #0f2744 100%);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--primary-blue);
+        }
+
+        .logo-text h1 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .logo-text span {
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #0f2744 50%, var(--primary-blue) 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50%, -50%); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: var(--primary-blue);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h2 {
+            color: var(--white);
+            font-size: 4rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--primary-blue);
+            box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212,175,55,0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--primary-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-gold);
+            color: var(--primary-blue);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+
+        /* Floating Bread Animation */
+        .floating-items {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .float-item {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.15;
+            animation: floatUp 15s infinite;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Offers Section */
+        .offers {
+            padding: 80px 5%;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h3 {
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title .divider {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gold);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .offer-card {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #0f2744 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 2px solid var(--primary-gold);
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .offer-badge {
+            background: var(--primary-gold);
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary-gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-tag {
+            background: var(--primary-gold);
+            color: var(--primary-blue);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 5%;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--light-gold) 100%);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h4 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .product-info .en-name {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-gold);
+            color: var(--primary-blue);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 80px 5%;
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .location-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            color: var(--primary-gold);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .location-item i {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            margin-top: 5px;
+        }
+
+        .location-item p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .delivery-box {
+            background: rgba(212,175,55,0.2);
+            border: 2px solid var(--primary-gold);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .delivery-box h4 {
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .location-map {
+            border-radius: 20px;
+            height: 450px;
+            overflow: hidden;
+            border: 3px solid var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 5%;
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            height: 280px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(30,58,138,0.9), transparent);
+            color: var(--white);
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            padding: 60px 5%;
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--cream) 100%);
+            text-align: center;
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            width: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .social-card.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+        }
+
+        .social-card.facebook:hover {
+            background: #1877f2;
+            color: white;
+        }
+
+        .social-card.snapchat:hover {
+            background: #fffc00;
+            color: #000;
+        }
+
+        .social-card.whatsapp:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        .social-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .social-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .social-card span {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-gold);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-gold);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* English Mode Styles */
+        body.english {
+            direction: ltr;
+            font-family: 'Playfair Display', 'Cairo', serif;
+        }
+
+        body.english .nav-links a::after {
+            right: auto;
+            left: 0;
+        }
+
+        body.english .lang-toggle {
+            right: 20px;
+            left: auto;
+        }
+
+        body.english .product-badge {
+            right: auto;
+            left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <button class="lang-toggle" onclick="toggleLanguage()">
+        <i class="fas fa-globe"></i> <span id="lang-text">English</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bread-slice"></i>
+                </div>
+                <div class="logo-text">
+                    <h1 data-ar="الأمواج" data-en="Al-Amwaj">الأمواج</h1>
+                    <span data-ar="مخبز وحلويات" data-en="Bakery & Pastries">مخبز وحلويات</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                <li><a href="#products" data-ar="منتجاتنا" data-en="Our Products">منتجاتنا</a></li>
+                <li><a href="#offers" data-ar="العروض" data-en="Offers">العروض</a></li>
+                <li><a href="#social" data-ar="تواصل معنا" data-en="Connect">تواصل معنا</a></li>
+                <li><a href="#location" data-ar="الموقع" data-en="Location">الموقع</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-items">
+            <span class="float-item" style="left: 10%; animation-delay: 0s;">🥐</span>
+            <span class="float-item" style="left: 30%; animation-delay: 3s;">🥖</span>
+            <span class="float-item" style="left: 50%; animation-delay: 6s;">🍞</span>
+            <span class="float-item" style="left: 70%; animation-delay: 9s;">🥨</span>
+            <span class="float-item" style="left: 90%; animation-delay: 12s;">🧁</span>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge" data-ar="طازج يومياً" data-en="Fresh Daily">طازج يومياً</div>
+            <h2 data-ar="مخبز الأمواج" data-en="Al-Amwaj Bakery">مخبز الأمواج</h2>
+            <p class="subtitle" data-ar="خبز فرنسي أصيل وحلويات تقليدية" data-en="Authentic French Bread & Traditional Pastries">خبز فرنسي أصيل وحلويات تقليدية</p>
+            <p data-ar="نقدم لكم أجود أنواع المخبوزات والحلويات الطازجة يومياً بأيدي أمهر الخبازين في صحار. جودة لا تضاهى وطعم لا ينسى." data-en="We offer you the finest types of baked goods and fresh pastries daily, made by the hands of the most skilled bakers in Sohar. Unmatched quality and unforgettable taste.">نقدم لكم أجود أنواع المخبوزات والحلويات الطازجة يومياً بأيدي أمهر الخبازين في صحار. جودة لا تضاهى وطعم لا ينسى.</p>
+
+            <div class="cta-buttons">
+                <a href="#products" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i>
+                    <span data-ar="اكتشف منتجاتنا" data-en="Discover Our Products">اكتشف منتجاتنا</span>
+                </a>
+                <a href="https://wa.me/96898058158" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-ar="تواصل واتساب" data-en="WhatsApp Us">تواصل واتساب</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers" id="offers">
+        <div class="section-title">
+            <h3 data-ar="عروضنا المميزة" data-en="Our Special Offers">عروضنا المميزة</h3>
+            <div class="divider"></div>
+        </div>
+
+        <div class="offers-grid">
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fas fa-gift"></i></div>
+                <span class="offer-badge" data-ar="عرض اليوم" data-en="Today's Offer">عرض اليوم</span>
+                <h4 data-ar="اشترِ 2 واحصل على 1 مجاناً" data-en="Buy 2 Get 1 Free">اشترِ 2 واحصل على 1 مجاناً</h4>
+                <p data-ar="على جميع أنواع الخبز الفرنسي والكرواسان. العرض ساري طوال اليوم." data-en="On all types of French bread and croissants. Offer valid all day.">على جميع أنواع الخبز الفرنسي والكرواسان. العرض ساري طوال اليوم.</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fas fa-percent"></i></div>
+                <span class="offer-badge" data-ar="خصم 20%" data-en="20% OFF">خصم 20%</span>
+                <h4 data-ar="خصم على الكنافة والمناقيش" data-en="Discount on Kunafa & Manaqeesh">خصم على الكنافة والمناقيش</h4>
+                <p data-ar="استمتع بخصم 20% على جميع أنواع الكنافة والمناقيش الطازجة. لا تفوت الفرصة!" data-en="Enjoy 20% off on all types of fresh Kunafa and Manaqeesh. Don't miss the chance!">استمتع بخصم 20% على جميع أنواع الكنافة والمناقيش الطازجة. لا تفوت الفرصة!</p>
+            </div>
+
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fas fa-coffee"></i></div>
+                <span class="offer-badge" data-ar="عرض خاص" data-en="Special Combo">عرض خاص</span>
+                <h4 data-ar="فريكاسي + مشروب" data-en="Fricassé + Drink Combo">فريكاسي + مشروب</h4>
+                <p data-ar="1 فريكاسي + 1 مشروب بـ 0.600 ريال عماني فقط!" data-en="1 Fricassé + 1 Drink for only 0.600 OMR!">1 فريكاسي + 1 مشروب بـ 0.600 ريال عماني فقط!</p>
+                <div class="price-tag">0.600 OMR</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-title">
+            <h3 data-ar="منتجاتنا" data-en="Our Products">منتجاتنا</h3>
+            <div class="divider"></div>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <span class="product-badge" data-ar="الأكثر مبيعاً" data-en="Best Seller">الأكثر مبيعاً</span>
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/barcookbakery.com/56f8d1d4510632ba62925bedd9142d6fe91c0ba9.jpg" alt="Cheese Croissant">
+                </div>
+                <div class="product-info">
+                    <h4 data-ar="كرواسان بالجبنة" data-en="Cheese Croissant">كرواسان بالجبنة</h4>
+                    <p class="en-name">Croissant au fromage</p>
+                    <p data-ar="كرواسان فرنسي أصيل محشو بأجود أنواع الجبنة الطازجة" data-en="Authentic French croissant stuffed with the finest fresh cheese">كرواسان فرنسي أصيل محشو بأجود أنواع الجبنة الطازجة</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.mycookingjourney.com/16231dbbe5039431220a0c51257581eec21a104e.jpg" alt="Samoon Bread">
+                </div>
+                <div class="product-info">
+                    <h4 data-ar="صمون عماني تقليدي" data-en="Traditional Omani Samoon">صمون عماني تقليدي</h4>
+                    <p class="en-name">Samoon Omani Traditional</p>
+                    <p data-ar="خبز صمون تقليدي بطريقة أصيلة، مقرمش من الخارج وطري من الداخل" data-en="Traditional Samoon bread made authentically, crispy outside and soft inside">خبز صمون تقليدي بطريقة أصيلة، مقرمش من الخارج وطري من الداخل</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="product-badge" data-ar="توقيع خاص" data-en="Signature">توقيع خاص</span>
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/amiraspantry.com/c4165ce50ee0892407ba01d11167f3ae6d5d7c92.jpg" alt="Kunafa">
+                </div>
+                <div class="product-info">
+                    <h4 data-ar="كنافة الأمواج" data-en="Al-Amwaj Kunafa">كنافة الأمواج</h4>
+                    <p class="en-name">Kunafa Al-Amwaj (Signature Edition)</p>
+                    <p data-ar="كنافة خاصة بتوابل سرية ونكهة فريدة لا تجدها إلا هنا" data-en="Special Kunafa with secret spices and unique flavor found only here">كنافة خاصة بتوابل سرية ونكهة فريدة لا تجدها إلا هنا</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/urbanfarmandkitchen.com/dfe08082c392a52ea57c05ed88f2327f0ebcb31a.jpg" alt="Manaqeesh">
+                </div>
+                <div class="product-info">
+                    <h4 data-ar="مناقوشة (زعتر-جبنة-عكاوي)" data-en="Manaqeesh (Zaatar-Cheese-Akawi)">مناقوشة (زعتر-جبنة-عكاوي)</h4>
+                    <p class="en-name">Manakeesh (Zaater-Cheese-Akawi)</p>
+                    <p data-ar="عجينة طازجة مع زعتر أردني أصلي وجبنة عكاوي" data-en="Fresh dough with authentic Jordanian zaatar and Akawi cheese">عجينة طازجة مع زعتر أردني أصلي وجبنة عكاوي</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/bobs-redmill.transforms.svdcdn.com/864f894d0901509300d2d147c07c1bd1f8d39519.jpg" alt="Brioche">
+                </div>
+                <div class="product-info">
+                    <h4 data-ar="بريوش (برتقال/هيل)" data-en="Brioche (Orange/Cardamom)">بريوش (برتقال/هيل)</h4>
+                    <p class="en-name">Brioche (Orange/Cardamom)</p>
+                    <p data-ar="بريوش فرنسي ناعم بنكهة البرتقال أو الهيل العربي الفاخر" data-en="Soft French brioche with orange or premium Arabic cardamom flavor">بريوش فرنسي ناعم بنكهة البرتقال أو الهيل العربي الفاخر</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="product-badge" data-ar="صحي" data-en="Healthy">صحي</span>
+                <div class="product-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.wholesomeyum.com/caf4c447e7d75f16dec140e9951bdf9c050432b0.jpg" alt="Sugar Free">
+                </div>
+                <div class="product-info">
+                    <h4 data-ar="خيارات بدون سكر" data-en="Sugar-free Options">خيارات بدون سكر</h4>
+                    <p class="en-name">Sugar-free Pastries</p>
+                    <p data-ar="منتجات خاصة لمرضى السكر ومحبي الحياة الصحية بدون إضافة سكر" data-en="Special products for diabetics and health-conscious customers with no added sugar">منتجات خاصة لمرضى السكر ومحبي الحياة الصحية بدون إضافة سكر</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section" id="social">
+        <div class="section-title">
+            <h3 data-ar="تابعنا على وسائل التواصل" data-en="Follow Us on Social Media">تابعنا على وسائل التواصل</h3>
+            <div class="divider"></div>
+            <p style="margin-top: 15px; color: #666;" data-ar="انضم إلى عائلة الأمواج وتابع أحدث عروضنا" data-en="Join the Al-Amwaj family and follow our latest offers">انضم إلى عائلة الأمواج وتابع أحدث عروضنا</p>
+        </div>
+
+        <div class="social-grid">
+            <a href="https://instagram.com/alamwaj.bakery" target="_blank" class="social-card instagram">
+                <i class="fab fa-instagram"></i>
+                <h4>Instagram</h4>
+                <span>@alamwaj.bakery</span>
+            </a>
+
+            <a href="https://facebook.com/alamwajbakery" target="_blank" class="social-card facebook">
+                <i class="fab fa-facebook-f"></i>
+                <h4>Facebook</h4>
+                <span>Al-Amwaj Bakery</span>
+            </a>
+
+            <a href="https://snapchat.com/add/alamwaj.bakery" target="_blank" class="social-card snapchat">
+                <i class="fab fa-snapchat-ghost"></i>
+                <h4>Snapchat</h4>
+                <span>@alamwaj.bakery</span>
+            </a>
+
+            <a href="https://wa.me/96898058158" target="_blank" class="social-card whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <h4>WhatsApp</h4>
+                <span>+968 9805 8158</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="location-content">
+            <div class="location-info">
+                <h3 data-ar="زورونا" data-en="Visit Us">زورونا</h3>
+
+                <div class="location-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong data-ar="العنوان:" data-en="Address:">العنوان:</strong>
+                        <p data-ar="منطقة الطريف، بجانب مطعم ريدان، صحار، سلطنة عمان" data-en="At-Tarif District, Next to Raidan Restaurant, Sohar, Sultanate of Oman">منطقة الطريف، بجانب مطعم ريدان، صحار، سلطنة عمان</p>
+                    </div>
+                </div>
+
+                <div class="location-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong data-ar="أوقات العمل:" data-en="Working Hours:">أوقات العمل:</strong>
+                        <p data-ar="السبت - الخميس: 6:00 صباحاً - 10:00 مساءً<br>الجمعة: 2:00 ظهراً - 10:00 مساءً" data-en="Saturday - Thursday: 6:00 AM - 10:00 PM<br>Friday: 2:00 PM - 10:00 PM">السبت - الخميس: 6:00 صباحاً - 10:00 مساءً<br>الجمعة: 2:00 ظهراً - 10:00 مساءً</p>
+                    </div>
+                </div>
+
+                <div class="location-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong data-ar="الهاتف / واتساب:" data-en="Phone / WhatsApp:">الهاتف / واتساب:</strong>
+                        <p><a href="tel:+96898058158" style="color: var(--primary-gold); text-decoration: none;">+968 9805 8158</a></p>
+                    </div>
+                </div>
+
+                <div class="location-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong data-ar="البريد الإلكتروني:" data-en="Email:">البريد الإلكتروني:</strong>
+                        <p>info@alamwajbakery.com</p>
+                    </div>
+                </div>
+
+                <div class="delivery-box">
+                    <h4><i class="fas fa-motorcycle"></i> <span data-ar="خدمة التوصيل متوفرة" data-en="Delivery Available">خدمة التوصيل متوفرة</span></h4>
+                    <p data-ar="نقدم خدمة التوصيل إلى جميع مناطق صحار مقابل رسوم إضافية. اتصل بنا للمزيد من التفاصيل." data-en="We offer delivery service to all areas of Sohar for an additional fee. Contact us for more details.">نقدم خدمة التوصيل إلى جميع مناطق صحار مقابل رسوم إضافية. اتصل بنا للمزيد من التفاصيل.</p>
+                </div>
+            </div>
+
+            <div class="location-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3656.1234567890123!2d56.7045278!3d24.3743056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDIyJzI3LjUiTiA1NsKwNDInMTYuMyJF!5e0!3m2!1sen!2som!4v1234567890" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="section-title">
+            <h3 data-ar="معرض الصور" data-en="Gallery">معرض الصور</h3>
+            <div class="divider"></div>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" data-label="🥐 Croissants">
+                <img src="https://kimi-web-img.moonshot.cn/img/barcookbakery.com/56f8d1d4510632ba62925bedd9142d6fe91c0ba9.jpg" alt="Croissants">
+            </div>
+            <div class="gallery-item" data-label="🥖 Fresh Bread">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.mycookingjourney.com/16231dbbe5039431220a0c51257581eec21a104e.jpg" alt="Samoon">
+            </div>
+            <div class="gallery-item" data-label="🍯 Kunafa">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.healthylifetrainer.com/e83f0b8f773be629114eba6426bd025511e10469.jpg" alt="Kunafa">
+            </div>
+            <div class="gallery-item" data-label="🌿 Manaqeesh">
+                <img src="https://kimi-web-img.moonshot.cn/img/cheznermine.com/0e7aaf62ef5558df7d72313b50bd1cd7e72e5dcf.jpg" alt="Manaqeesh">
+            </div>
+            <div class="gallery-item" data-label="🥯 Brioche">
+                <img src="https://kimi-web-img.moonshot.cn/img/bobs-redmill.transforms.svdcdn.com/864f894d0901509300d2d147c07c1bd1f8d39519.jpg" alt="Brioche">
+            </div>
+            <div class="gallery-item" data-label="🧁 Bakery Display">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/704a0095bde5dd46eb4aa2b7a93447c3d326d92a.jpg" alt="Bakery Display">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 data-ar="مخبز الأمواج" data-en="Al-Amwaj Bakery">مخبز الأمواج</h4>
+                <p data-ar="نقدم لكم أجود المخبوزات والحلويات الطازجة يومياً في صحار. جودة لا تضاهى وطعم لا ينسى منذ افتتاحنا." data-en="We offer you the finest fresh baked goods and pastries daily in Sohar. Unmatched quality and unforgettable taste since our opening.">نقدم لكم أجود المخبوزات والحلويات الطازجة يومياً في صحار. جودة لا تضاهى وطعم لا ينسى منذ افتتاحنا.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/alamwaj.bakery" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/alamwajbakery" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://snapchat.com/add/alamwaj.bakery" target="_blank"><i class="fab fa-snapchat-ghost"></i></a>
+                    <a href="https://wa.me/96898058158" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h4>
+                <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+                <a href="#products" data-ar="المنتجات" data-en="Products">المنتجات</a>
+                <a href="#offers" data-ar="العروض" data-en="Offers">العروض</a>
+                <a href="#location" data-ar="الموقع" data-en="Location">الموقع</a>
+            </div>
+
+            <div class="footer-section">
+                <h4 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h4>
+                <p><i class="fas fa-phone"></i> <a href="tel:+96898058158" style="color: rgba(255,255,255,0.8);">+968 9805 8158</a></p>
+                <p><i class="fas fa-envelope"></i> info@alamwajbakery.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-ar="صحار، سلطنة عمان" data-en="Sohar, Oman">صحار، سلطنة عمان</span></p>
+            </div>
+
+            <div class="footer-section">
+                <h4 data-ar="النشرة البريدية" data-en="Newsletter">النشرة البريدية</h4>
+                <p data-ar="اشترك للحصول على أحدث العروض والأخبار" data-en="Subscribe to get the latest offers and news">اشترك للحصول على أحدث العروض والأخبار</p>
+                <form style="margin-top: 15px;" onsubmit="event.preventDefault(); alert('شكراً للاشتراك! / Thank you for subscribing!');">
+                    <input type="email" placeholder="بريدك الإلكتروني / Your Email" style="padding: 10px; border-radius: 5px; border: none; width: 100%; margin-bottom: 10px; font-family: inherit;" required>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; border: none; cursor: pointer;" data-ar="اشتراك" data-en="Subscribe">اشتراك</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 <span data-ar="مخبز الأمواج" data-en="Al-Amwaj Bakery">مخبز الأمواج</span>. <span data-ar="جميع الحقوق محفوظة" data-en="All Rights Reserved">جميع الحقوق محفوظة</span>.</p>
+        </div>
+    </footer>
+
+    <script>
+        let isEnglish = false;
+
+        function toggleLanguage() {
+            isEnglish = !isEnglish;
+            document.body.classList.toggle('english');
+            document.body.dir = isEnglish ? 'ltr' : 'rtl';
+
+            const elements = document.querySelectorAll('[data-ar][data-en]');
+            elements.forEach(el => {
+                el.textContent = isEnglish ? el.getAttribute('data-en') : el.getAttribute('data-ar');
+            });
+
+            document.getElementById('lang-text').textContent = isEnglish ? 'العربية' : 'English';
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(30, 58, 138, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'linear-gradient(135deg, var(--primary-blue) 0%, #0f2744 100%)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
